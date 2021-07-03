@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Random;
+
 @SpringBootApplication
 public class Stream4Application {
 
@@ -25,4 +27,11 @@ public class Stream4Application {
             System.out.println("AnotherProcess\t" + k + " --> " + v);
         });
     }
+
+    private Random random = new Random();
+    @Bean
+    public java.util.function.Supplier<Integer> send() {
+        return () -> random.nextInt(100);
+    }
 }
+
