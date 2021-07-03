@@ -3,7 +3,7 @@ spring:
   cloud:
     stream:
       function:
-        definition: process;anotherProcess;send;
+        definition: process;anotherProcess;send;increment;
       bindings:
         send-out-0:
           destination: random-int
@@ -11,3 +11,7 @@ spring:
           destination: process
         anotherProcess-in-0:
           destination: process
+        increment-in-0:
+          destination: process
+        increment-out-0:
+          destination: increment-out
