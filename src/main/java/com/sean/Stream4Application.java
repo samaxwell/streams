@@ -15,9 +15,14 @@ public class Stream4Application {
     @Bean
     public java.util.function.Consumer<KStream<String, String>> process() {
         return input -> input.foreach((k,v) -> {
-            System.out.println("\t" + k + " --> " + v);
+            System.out.println("Process:\t" + k + " --> " + v);
         });
-
     }
 
+    @Bean
+    public java.util.function.Consumer<KStream<String, String>> anotherProcess() {
+        return input -> input.foreach((k,v) -> {
+            System.out.println("AnotherProcess\t" + k + " --> " + v);
+        });
+    }
 }

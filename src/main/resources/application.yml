@@ -2,6 +2,10 @@
 spring:
   cloud:
     stream:
+      function:
+        definition: process;anotherProcess
       bindings:
         process-in-0:
+          destination: process
+        anotherProcess-in-0:
           destination: process
