@@ -2,6 +2,11 @@
 spring:
   cloud:
     stream:
+      kafka:
+        streams:
+          binder:
+            deserialization-exception-handler: sendtodlq
+#          bindings.<processor-name>.consumer.dlqName: generic-dlq <== alternative to DlqDestinationResolver
       function:
         definition: process;anotherProcess;send;increment;obj;
       bindings:
