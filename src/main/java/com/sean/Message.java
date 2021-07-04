@@ -14,6 +14,7 @@ public class Message {
     private Boolean isReady; // accepts: [0,1,true,false,"true","false"]
     private List<String> recipients;
     private Double priority;
+    private Sender sender;
 
     public void printMessage() {
         System.out.println(
@@ -21,8 +22,8 @@ public class Message {
                 "MESSAGE-BODY: \t" + this.content + "\n" +
                 "MESSAGE-ISREADY: \t" + this.isReady + "\n" +
                 "MESSAGE-RECIPIENTS: \t" + this.recipients + "\n" +
-                "MESSAGE-PRIORITY: \t" + this.priority +
-                "\n"
+                "MESSAGE-PRIORITY: \t" + this.priority + "\n" +
+                "MESSAGE-SENDER: \t" + this.sender.getName() + "\n"
         );
     }
 }
@@ -37,7 +38,10 @@ Kafka Message:
          "sam",
          "man"
       ],
-      "priority": 1.0123456789
+      "priority": 1.0123456789,
+       "sender": {
+          "name": "Sean"
+       }
     }
 */
 
