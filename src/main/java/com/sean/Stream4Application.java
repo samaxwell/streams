@@ -1,13 +1,11 @@
 package com.sean;
 
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Random;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class Stream4Application {
@@ -38,9 +36,12 @@ public class Stream4Application {
 
     @Bean
     public java.util.function.Function<KStream<String, String>, KStream<String, String>> increment() {
-        return input -> input.mapValues(i -> {
-            return i.concat("-") + random.nextInt(1);
-        });
+        return input -> input.mapValues(i -> i.concat("-") + random.nextInt(1));
     }
-}
 
+    @Bean
+    public java.util.function.Consumer<KStream<String, Message>> obj() {
+        return input -> input.foreach((k,v) -> v.printMessage());
+    }
+
+}
